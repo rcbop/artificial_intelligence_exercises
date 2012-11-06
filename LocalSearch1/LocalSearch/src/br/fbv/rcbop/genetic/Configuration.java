@@ -24,10 +24,7 @@ public class Configuration implements Comparable<Configuration> {
 		heuristic = 0;
 		int[] phenotype = generatePhenotype();
 		for (int i = 0; i < phenotype.length; i++) {
-			heuristic += checkDiagonal(phenotype[i], i, phenotype);
-		}
-		for (int i = 0; i < phenotype.length; i++) {
-			heuristic += checkLine(phenotype[i], i, phenotype);
+			heuristic += checkDiagonals(phenotype[i], i, phenotype);
 		}
 	}
 
@@ -42,20 +39,10 @@ public class Configuration implements Comparable<Configuration> {
 		return fenotype;
 	}
 
-	private int checkLine(int x, int y, int[] phenotype) {
+	private int checkDiagonals(int x, int y, int[] fenotype) {
 		int attQueens = 0;
-		for (int i = 0; i < phenotype.length; i++) {
-			if ((x != phenotype[i] && y != i) && (x == phenotype[i])) {
-				attQueens++;
-			}
-		}
-		return attQueens;
-	}
-
-	private int checkDiagonal(int x, int y, int[] phenotype) {
-		int attQueens = 0;
-		for (int i = 0; i < phenotype.length; i++) {
-			if ((x != phenotype[i] && y != i) && (Math.abs(y - i) == Math.abs(x - phenotype[i]))) {
+		for (int i = 0; i < fenotype.length; i++) {
+			if ((x != fenotype[i] && y != i) && (Math.abs(y - i) == Math.abs(x - fenotype[i]))) {
 				attQueens++;
 			}
 		}

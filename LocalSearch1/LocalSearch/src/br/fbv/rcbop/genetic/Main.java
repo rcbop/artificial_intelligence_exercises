@@ -16,8 +16,6 @@ package br.fbv.rcbop.genetic;
 			System.out.println("--------------------------");
 			System.out.println("  PROBLEMA DAS 8 RAINHAS  ");
 			System.out.println("--------------------------");
-			System.out.println("\nDigite um (1) para calcular e imprimir todas as soluções possíveis, "
-			+ "\nDigite dois (2) para imprimir uma solução qualquer e pressione ENTER:\n");
 			
 			int option = terminal.nextInt();
 			terminal.close();
