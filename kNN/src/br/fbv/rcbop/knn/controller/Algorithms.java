@@ -86,11 +86,10 @@ public class Algorithms {
 	public int[][] kNearestNeighbors(int k, int distanceCalcMethod, int p, int testPercentage) throws IOException {
 		confusionValues = new int[3][3];
 		success = 0;
-		readDatabase();
 		divideDatabase(testPercentage);
-		writeConsoleBreakLine("==>  Embaralhando base de dados");
-		db = Util.shuffleDatabase(db);
-		writeConsoleBreakLine("==>  Base de dados embaralhada");
+//		writeConsoleBreakLine("==>  Embaralhando base de dados");
+//		db = Util.shuffleDatabase(db);
+//		writeConsoleBreakLine("==>  Base de dados embaralhada");
 		
 		writeConsoleBreakLine(" |---------     COMEÇANDO TESTES      ----------|");
 
@@ -195,20 +194,28 @@ public class Algorithms {
 		testPercentage = testPercent;
 		int testCoef = getTestSize(testPercent);
 		testDb = new Iris[testCoef];
-		for (int i = 0; i < testCoef/3; i++) {
+		
+		int delta = testDb.length/3;
+		for (int i = 0; i < testDb.length/3; i++) {
 			testDb[i] = dbSetosa[i];
+			testDb[i+delta] = dbVersicolor[i];
+			testDb[i+(2*delta)] = dbVirginica[i];
 		}
-		for (int i = 0; i < testCoef/3; i++) {
-			testDb[i] = dbVirginica[i];
-		}
-		for (int i = 0; i < testCoef/3 + 1; i++) {
-			testDb[i] = dbVersicolor[i];
-		}
-		// Shift left
+		
+		delta = 11;
 		Iris[] newDb = new Iris[db.length - testCoef];
-		for (int i = 0; i < newDb.length; i++) {
-			newDb[i] = db[i + testCoef];
+		for (int i = 0; i < 49; i++) {
+			newDb[i] = dbSetosa[delta];
 		}
+		delta = 11;
+		for (int i = 49; i < 99; i++) {
+			newDb[i] = dbVersicolor[delta];
+		}
+		delta = 11;
+		for (int i = 99; i < newDb.length; i++) {
+			newDb[i] = dbVirginica[delta];
+		}
+		
 		db = newDb;
 		writeConsoleBreakLine("==>  Base de dados dividida");
 	}
@@ -247,8 +254,8 @@ public class Algorithms {
 		return MathUtils.round(((double) success / testDb.length) * 100, 2, BigDecimal.ROUND_HALF_UP);
 	}
 
-	private int getTestSize(int testPercent) {
-		return (int) (db.length * ((double) testPercent / 100));
+	public int getTestSize(int testPercent) {
+		return (int) (db.length * ((double) testPercent / 100)) - 1;
 	}
 
 }

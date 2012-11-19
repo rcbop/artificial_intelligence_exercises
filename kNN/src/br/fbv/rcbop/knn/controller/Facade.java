@@ -51,8 +51,8 @@ public class Facade {
 	}
 	
 	public int getTestSize() throws IOException{
-//		return algorithms.getTestSize(TEST_PERCENTAGE);
-		return 0;
+		algorithms.readDatabase();
+		return algorithms.getTestSize(TEST_PERCENTAGE);
 	}
 
 }
