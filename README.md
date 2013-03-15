@@ -12,4 +12,4 @@ GraduaçãoFBV
 - Problema das oito peças deslizantes com busca em largura - SlidingPuzzle
 - Problema das Iris com kNN - K Nearest Neighbors - kNN
 - 
-- by rcbpeixoto@gmail.com para a disciplina de IA na Faculdade Boa Viagem - Recife - PE
+- by rcbpeixoto@gmail.com para a disciplina de IA ministrada pela professora Renata Freire na Faculdade Boa Viagem - Recife - PE
