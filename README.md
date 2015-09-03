@@ -1,4 +1,4 @@
-inteligencia_artificial
+artificial_intelligence_exercises
 =======================
 
 GraduaçãoFBV
